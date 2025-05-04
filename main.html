@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sergio's Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        #hero {
+            background: linear-gradient(315deg, #FF7900, #FFA866);
+            color: white;
+            padding: 120px 0;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .portfolio-item {
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .skill-item {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background-color: #e9ecef;
+            transform: scale(1.05);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #FF7900;
+        }
+
+        .nav-link {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #FF7900;
+        }
+
+        .btn-primary {
+            background-color: #FF7900;
+            border-color: #FF7900;
+        }
+
+        .btn-primary:hover {
+            background-color: #E66E00;
+            border-color: #E66E00;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 0;
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #FF7900;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            color: #FF7900;
+            margin-right: 10px;
+        }
+
+        .divider {
+            background-color: #FF7900 !important;
+        }
+
+        .badge.bg-primary {
+            background-color: #FF7900 !important;
+        }
+
+        .btn-outline-primary {
+            color: #FF7900;
+            border-color: #FF7900;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #FF7900;
+            color: white;
+        }
+
+        .timeline-card {
+            border-left: 4px solid #FF7900;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            /* Add animation on load */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Add delay to stagger animation */
+        .timeline-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .timeline-card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .timeline-card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .timeline-card::before {
+            content: "";
+            position: absolute;
+            left: -12px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #FF7900;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-card:hover::before {
+            transform: scale(1.2);
+        }
+
+        .timeline-card-date {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #FF7900;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .timeline-card:hover .timeline-card-date {
+            transform: translateX(5px);
+            background-color: #E66E00;
+        }
+
+        .badge.bg-light {
+            background-color: #f8f9fa !important;
+            color: #333 !important;
+            transition: background-color 0.3s ease;
+        }
+
+        .timeline-card:hover .badge.bg-light {
+            background-color: #e9ecef !important;
+        }
+
+        .email-link {
+            color: #FF7900;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .email-link:hover {
+            color: #E66E00;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Sergio's Portfolio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#hero">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#experience">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section id="hero" class="d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-4">Hello, I'm <span class="text-warning">Sergio Alvaro</span></h1>
+                <p class="lead mb-4">A passionate web developer focused on creating clean, user-friendly experiences</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="#portfolio" class="btn btn-light btn-lg px-4">View My Work</a>
+                    <a href="#contact" class="btn btn-outline-light btn-lg px-4">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="section-padding bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-6 mx-auto text-center">
+                <h2 class="fw-bold mb-3">About Me</h2>
+                <div class="divider mx-auto mb-4" style="width: 50px; height: 3px;"></div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <img src="assets/DSCF9577_sB%202.JPG" alt="Profile Image" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-7">
+                <h3 class="mb-3">Who I Am</h3>
+                <p class="lead">I'm a passionate web developer with a strong focus on creating beautiful, functional websites that deliver exceptional user experiences.</p>
+                <p>Curre.</p>
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-user contact-icon"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0">Name</h6>
+                                <p class="mb-0">Sergio Alvaro</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0">Location</h6>
+                                <p class="mb-0">Geel, Belgium</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mt-4">
+                    <a href="cv.html" class="btn btn-primary me-2">View CV</a>
+                    <a href="#contact" class="btn btn-outline-dark">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="section-padding">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-6 mx-auto text-center">
+                <h2 class="fw-bold mb-3">My Skills</h2>
+                <div class="divider mx-auto mb-4" style="width: 50px; height: 3px;"></div>
+                <p>These are the technologies and tools I work with on a daily basis.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="skill-item">
+                    <i class="fab fa-html5 skill-icon"></i>
+                    <h5>HTML5</h5>
+                    <p>Creating semantic and accessible markup</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="skill-item">
+                    <i class="fab fa-css3-alt skill-icon"></i>
+                    <h5>CSS3</h5>
+                    <p>Styling with modern CSS techniques</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="skill-item">
+                    <i class="fab fa-js skill-icon"></i>
+                    <h5>JavaScript</h5>
+                    <p>Building interactive web experiences</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="skill-item">
+                    <i class="fa fa-database skill-icon"></i>
+                    <h5>SQL</h5>
+                    <p>Query data in relational databases</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="skill-item">
+                    <i class="fab fa-laravel skill-icon"></i>
+                    <h5>Laravel</h5>
+                    <p>PHP framework for building modern, scalable web applications</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="skill-item">
+                    <i class="fab fa-git-alt skill-icon"></i>
+                    <h5>Git</h5>
+                    <p>Version control and collaboration</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="portfolio" class="section-padding bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-6 mx-auto text-center">
+                <h2 class="fw-bold mb-3">My Portfolio</h2>
+                <div class="divider mx-auto mb-4" style="width: 50px; height: 3px;"></div>
+                <p>Check out some of my recent work and projects.</p>
+            </div>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="row mb-5">
+            <div class="col-lg-6">
+                <div class="portfolio-image-container" style="height: 350px; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <img src="assets/TMIP.png" class="img-fluid w-100 h-100" alt="International Student Platform" style="object-fit: cover; object-position: top;">
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="portfolio-content ps-lg-4 mt-4 mt-lg-0">
+                    <h3 class="mb-3">International Student Platform</h3>
+                    <p class="mb-4">A fully responsive platform designed for international students. This comprehensive solution provides resources, community connections, and essential information to help international students navigate their academic journey. During this project, I aided in developing certain functionalities for the application, such ass housing search and other user specific functions.</p>
+                    <div class="d-flex gap-2 mb-4">
+                        <span class="badge bg-primary">PHP</span>
+                        <span class="badge bg-primary">Laravel</span>
+                        <span class="badge bg-primary">JavaScript</span>
+                    </div>
+                    <a href="#" class="btn btn-outline-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="row mb-5 flex-row-reverse">
+            <div class="col-lg-6">
+                <div class="portfolio-image-container" style="height: 350px; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <img src="assets/figma.png" class="img-fluid w-100 h-100" alt="Training Session Application Design" style="object-fit: cover; object-position: top;">
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="portfolio-content pe-lg-4 mt-4 mt-lg-0">
+                    <h3 class="mb-3">Training Session Application Design</h3>
+                    <p class="mb-4">Conceptual design for a training session application. This user interface design focuses on creating an intuitive, accessible experience for tracking and managing training sessions organised by students.</p>
+                    <div class="d-flex gap-2 mb-4">
+                        <span class="badge bg-primary">Figma</span>
+                    </div>
+                    <a href="#" class="btn btn-outline-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="row mb-5">
+            <div class="col-lg-6">
+                <div class="portfolio-image-container" style="height: 350px; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <img src="assets/Brainbin.png" class="img-fluid w-100 h-100" alt="BrainBin" style="object-fit: cover; object-position: top;">
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="portfolio-content ps-lg-4 mt-4 mt-lg-0">
+                    <h3 class="mb-3">BrainBin</h3>
+                    <p class="mb-4">A conceptual design for a self-sorting trash bin. This innovative solution uses AI technology to automatically sort waste, making recycling more efficient and accessible for everyday users.</p>
+                    <div class="d-flex gap-2 mb-4">
+                        <span class="badge bg-primary">Tailwind</span>
+                    </div>
+                    <a href="#" class="btn btn-outline-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="row flex-row-reverse">
+            <div class="col-lg-6">
+                <div class="portfolio-image-container" style="height: 350px; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <img src="assets/Brusselbrews.png" class="img-fluid w-100 h-100" alt="Brussels Brews" style="object-fit: cover; object-position: top;">
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="portfolio-content pe-lg-4 mt-4 mt-lg-0">
+                    <h3 class="mb-3">Brussels Brews</h3>
+                    <p class="mb-4">A website for a beer brewery client. This responsive website showcases the brewery's products, history, and brewing process while providing an engaging user experience for beer enthusiasts.</p>
+                    <div class="d-flex gap-2 mb-4">
+                        <span class="badge bg-primary">Bootstrap</span>
+                        <span class="badge bg-primary">JavaScript</span>
+                    </div>
+                    <a href="#" class="btn btn-outline-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="experience" class="section-padding">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-6 mx-auto text-center">
+                <h2 class="fw-bold mb-3">Experience & Education</h2>
+                <div class="divider mx-auto mb-4" style="width: 50px; height: 3px;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h3 class="mb-4">Work Experience</h3>
+                <div class="timeline-card">
+                    <span class="timeline-card-date">2022 - Present</span>
+                    <h5>Data Manager</h5>
+                    <p class="text-muted mb-2">PT. Megacomp</p>
+                    <p>Data manager specialising in inventory stocks and employee payroll</p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark me-2">Data Analysis</span>
+                        <span class="badge bg-light text-dark me-2">Inventory Management</span>
+                        <span class="badge bg-light text-dark">Payroll Systems</span>
+                    </div>
+                </div>
+
+                <h3 class="mb-4 mt-5">Volunteer Work</h3>
+                <div class="timeline-card">
+                    <span class="timeline-card-date">2021 - 2022</span>
+                    <h5>Mass Covid-19 Vaccination</h5>
+                    <p class="text-muted mb-2">Masyarakat Tionghoa Peduli Bandung</p>
+                    <p>Managed and maintained accurate vaccination data for over 10,000 individuals as part of a COVID-19 public health initiative.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark me-2">Data Management</span>
+                        <span class="badge bg-light text-dark me-2">Healthcare</span>
+                        <span class="badge bg-light text-dark">Public Service</span>
+                    </div>
+                </div>
+                <div class="timeline-card">
+                    <span class="timeline-card-date">2021 - 2023</span>
+                    <h5>Blood Donation</h5>
+                    <p class="text-muted mb-2">Masyarakat Tionghoa Peduli Bandung</p>
+                    <p>Managed and organized data for a blood donation campaign involving over 5,000 individuals.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark me-2">Data Organization</span>
+                        <span class="badge bg-light text-dark me-2">Healthcare</span>
+                        <span class="badge bg-light text-dark">Community Service</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section-padding bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-6 mx-auto text-center">
+                <h2 class="fw-bold mb-3">Get In Touch</h2>
+                <div class="divider mx-auto mb-4" style="width: 50px; height: 3px;"></div>
+                <p>Have a project in mind? Let's discuss how I can help you.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <div class="card border-0 shadow-sm p-4 h-100">
+                    <h4 class="mb-4">Contact Information</h4>
+                    <div class="contact-info">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0">Location</h6>
+                                <p class="mb-0">Geel, Belgium</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0">Email</h6>
+                                <p class="mb-0"><a href="mailto:Sergio.alvaro17@gmail.com" class="email-link">Sergio.alvaro17@gmail.com</a></p>
+                                <p class="mb-0"><a href="mailto:Sergio.alvaro@student.thomasmore.be" class="email-link">Sergio.alvaro@student.thomasmore.be</a></p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-phone-alt contact-icon"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0">Phone</h6>
+                                <p class="mb-0">+32 456 654 955</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5 class="mb-3">Follow Me</h5>
+                    <div class="d-flex">
+                        <a href="https://github.com/Ser91o" class="me-3 text-dark"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="https://www.linkedin.com/in/sergioalvaro" class="me-3 text-dark"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="https://instagram.com/sergio_alvaro.17/" class="text-dark"><i class="fab fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-sm p-4">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <label for="name">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <label for="subject">Subject</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" id="message" style="height: 150px" placeholder="Your Message"></textarea>
+                                    <label for="message">Your Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary px-4 py-2">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-4">
+                    <a href="https://github.com/Ser91o" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/sergioalvaro" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://instagram.com/sergio_alvaro.17/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="mb-0">&copy; 2025 Sergio Alvaro. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerOffset = 70;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.clientHeight;
+
+            if (pageYOffset >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    const animateOnScroll = () => {
+        const experienceSection = document.getElementById('experience');
+        if (!experienceSection) return;
+
+        const experienceSectionTop = experienceSection.offsetTop;
+        const windowBottom = window.pageYOffset + window.innerHeight;
+
+        if (windowBottom > experienceSectionTop) {
+            document.querySelectorAll('.timeline-card').forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = "1";
+                    card.style.transform = "translateY(0)";
+                }, index * 200);
+            });
+
+            window.removeEventListener('scroll', animateOnScroll);
+        }
+    };
+
+    animateOnScroll();
+
+    window.addEventListener('scroll', animateOnScroll);
+</script>
+</body>
+</html>

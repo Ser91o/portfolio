@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sergio Alvaro - CV</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #f26e21;
+      --dark-blue: #2e3947;
+      --light-gray: #f5f5f5;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      padding-top: 70px;
+    }
+
+    .navbar {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+    }
+
+    .nav-link {
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+    }
+
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+
+    .skill-level {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      margin-right: 3px;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .name-header {
+      color: var(--dark-blue);
+      font-weight: 700;
+      font-size: 2.5rem;
+    }
+
+    .cv-card {
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      background-color: white;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+
+    .orange-bg {
+      background-color: var(--primary-color);
+      height: 200px;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      margin-top: 70px; /* Account for navbar */
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    .timeline-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .timeline-item:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .timeline-item:nth-child(3) {
+      animation-delay: 0.5s;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .timeline-item:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 15px;
+      height: 15px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .timeline-item:hover:before {
+      transform: scale(1.2);
+    }
+
+    .timeline-item:after {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 20px;
+      bottom: -20px;
+      width: 2px;
+      background-color: var(--primary-color);
+    }
+
+    .timeline-item:last-child:after {
+      display: none;
+    }
+
+    .download-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+      text-decoration: none;
+    }
+
+    .download-btn:hover {
+      transform: scale(1.1);
+      color: white;
+    }
+
+    .download-btn i {
+      font-size: 24px;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: white;
+      padding: 30px 0;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .social-icon {
+      font-size: 1.5rem;
+      margin: 0 10px;
+      color: white;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: var(--primary-color);
+      transform: translateY(-5px);
+    }
+
+    @media (max-width: 768px) {
+      .profile-img {
+        width: 150px;
+        height: 150px;
+      }
+
+      .name-header {
+        font-size: 2rem;
+      }
+
+      .download-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .download-btn i {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Sergio's Portfolio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="main.html#hero">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="main.html#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="main.html#skills">Skills</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="main.html#portfolio">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="main.html#experience">Experience</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="main.html#contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="orange-bg"></div>
+  <div class="container mt-5 pt-5">
+    <div class="cv-card">
+      <div class="row mb-5 align-items-center">
+        <div class="col-md-3 text-center mb-4 mb-md-0">
+          <img src="assets/DSCF9577_sB%202.JPG" alt="Sergio Alvaro" class="profile-img">
+        </div>
+        <div class="col-md-6">
+          <h1 class="name-header mb-2">SERGIO ALVARO</h1>
+          <p class="lead">
+            I am an Indonesian student studying Computer Science at Thomas More Geel.
+            I am enthusiastic and always looking forward to learning a new skill.
+            I take pleasure in problem-solving coding-related issues that someone can benefit from.
+          </p>
+        </div>
+        <div class="col-md-3">
+          <div class="d-flex align-items-center mb-3">
+            <div class="contact-icon">
+              <i class="fas fa-calendar-days"></i>
+            </div>
+            <div>17 April 2002</div>
+          </div>
+          <div class="d-flex align-items-center mb-3">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div>0456 65 49 55</div>
+          </div>
+          <div class="d-flex align-items-center mb-3">
+            <div class="contact-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            <div>121 Larumseweg, Geel<br>2440 Belgium</div>
+          </div>
+          <div class="d-flex align-items-center mb-3">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>sergio.alvaro17@gmail.com</div>
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <div>linkedin.com/in/sergioalvaro</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-md-6 mb-4 mb-md-0">
+          <!-- Education Section -->
+          <h2 class="section-header">
+            <i class="fas fa-graduation-cap me-2"></i> EDUCATION
+          </h2>
+          <div class="timeline-item">
+            <h4>Thomas More Geel</h4>
+            <p class="fw-bold mb-0">Applied Computer Science</p>
+            <p class="text-muted">09/2023 - Present</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Cahaya Bangsa Classical School</h4>
+            <p class="fw-bold mb-0">High School, Indonesia</p>
+            <p class="text-muted">07/2017 - 06/2020</p>
+          </div>
+
+          <!-- Computer Skills Section -->
+          <h2 class="section-header mt-5">
+            <i class="fas fa-laptop-code me-2"></i> COMPUTER SKILLS
+          </h2>
+          <div class="mb-4">
+            <h5 class="fw-bold">MS Office</h5>
+            <p>Proficient in Word, Powerpoint, Excel</p>
+          </div>
+          <div class="mb-4">
+            <h5 class="fw-bold">Informatics</h5>
+            <p>Able to use Python, HTML, and Java</p>
+          </div>
+          <div class="mb-4">
+            <h5 class="fw-bold">Graphic Design</h5>
+            <p>Proficient in Photoshop 2022</p>
+          </div>
+
+          <!-- Languages Section -->
+          <h2 class="section-header mt-5">
+            <i class="fas fa-language me-2"></i> LANGUAGE
+          </h2>
+          <div class="d-flex flex-wrap align-items-center mb-3">
+            <div class="me-4 d-flex align-items-center">
+              <span class="fw-bold me-2">Indonesian</span>
+              <span class="skill-level"></span>
+              <span class="skill-level"></span>
+              <span class="skill-level"></span>
+              <span class="skill-level"></span>
+              <span class="skill-level"></span>
+            </div>
+            <div class="me-4 d-flex align-items-center">
+              <span class="fw-bold me-2">English</span>
+              <span class="skill-level"></span>
+              <span class="skill-level"></span>
+              <span class="skill-level"></span>
+              <span class="skill-level"></span>
+              <span class="skill-level"></span>
+            </div>
+            <div class="d-flex align-items-center">
+              <span class="fw-bold me-2">German</span>
+              <span class="skill-level"></span>
+              <span class="skill-level"></span>
+              <span class="skill-level"></span>
+              <span class="skill-level"></span>
+              <span class="skill-level" style="background-color: #e9ecef;"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+          <!-- Work Experience Section -->
+          <h2 class="section-header">
+            <i class="fas fa-briefcase me-2"></i> WORK EXPERIENCE
+          </h2>
+          <div class="timeline-item">
+            <h4>Part-Time Work at PT. Megacomp</h4>
+            <p class="text-muted">03/2022 - 09/2023</p>
+            <ul class="ps-3">
+              <li>Created and managed stock inventory system</li>
+              <li>Created employee absence system</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <h4>Volunteering - MTP Bandung</h4>
+            <p class="text-muted">03/2021 - 06/2022</p>
+            <ul class="ps-3">
+              <li>Managed data on vaccination for 10,000+ people</li>
+              <li>Managed data of blood donation event</li>
+            </ul>
+          </div>
+
+          <!-- Hobbies Section -->
+          <h2 class="section-header mt-5">
+            <i class="fas fa-heart me-2"></i> HOBBIES & INTERESTS
+          </h2>
+          <div class="row">
+            <div class="col-6">
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-water me-2 text-primary"></i> Scuba Diving</li>
+                <li class="mb-2"><i class="fas fa-table-tennis me-2 text-primary"></i> Tennis</li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-paint-brush me-2 text-primary"></i> Handicraft</li>
+                <li class="mb-2"><i class="fas fa-plane me-2 text-primary"></i> Travelling</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Reference Section -->
+          <h2 class="section-header mt-5">
+            <i class="fas fa-user-tie me-2"></i> REFERENCE
+          </h2>
+          <div class="card p-3 border-0 bg-light">
+            <div class="d-flex flex-wrap align-items-center">
+              <span class="fw-bold me-2">Mrs. Meylinda Pranoto</span>
+              <span class="me-2">•</span>
+              <span class="me-2">General Manager of PT. Megacomp</span>
+              <span class="me-2">•</span>
+              <span class="me-2">Bandung, Indonesia</span>
+              <span class="me-2">•</span>
+              <span class="me-2">Tel: +62 813-2070-5815</span>
+              <span class="me-2">•</span>
+              <span>Email: mey.pranoto@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<a href="#" class="download-btn" id="downloadCV" title="Download CV">
+  <i class="fas fa-download"></i>
+</a>
+
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="mb-4">
+          <a href="https://github.com/Ser91o" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/sergioalvaro" class="social-icon"><i class="fab fa-linkedin"></i></a>
+          <a href="https://instagram.com/sergio_alvaro.17/" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p class="mb-0">&copy; 2025 Sergio Alvaro. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<!-- HTML2PDF.js Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  document.getElementById('downloadCV').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // Hide the download button during PDF generation
+    this.style.display = 'none';
+
+    // Get only the main content
+    const element = document.querySelector('.cv-card');
+
+    // Create a clone of the element to avoid modifying the original
+    const clone = element.cloneNode(true);
+
+    // Create a temporary container for the clone
+    const tempContainer = document.createElement('div');
+    tempContainer.appendChild(clone);
+    document.body.appendChild(tempContainer);
+
+    // Apply optimized styling for PDF generation
+    tempContainer.style.position = 'absolute';
+    tempContainer.style.left = '-9999px';
+    tempContainer.style.top = '-9999px';
+    tempContainer.style.width = '210mm'; // A4 width
+    tempContainer.style.backgroundColor = 'white';
+
+    // Additional PDF-specific styling
+    const pdfStyles = document.createElement('style');
+    pdfStyles.textContent = `
+        .cv-card {
+          box-shadow: none !important;
+          padding: 15mm !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+        }
+        .timeline-item {
+          opacity: 1 !important;
+          transform: none !important;
+          animation: none !important;
+        }
+        .section-header {
+          break-after: avoid;
+          page-break-after: avoid;
+        }
+        h4, h5 {
+          break-after: avoid;
+          page-break-after: avoid;
+        }
+        .row { display: flex !important; }
+        @page {
+          size: A4;
+          margin: 0;
+        }
+      `;
+    tempContainer.appendChild(pdfStyles);
+
+    // Wait for any images to load in the clone
+    const images = clone.querySelectorAll('img');
+    const imagePromises = Array.from(images).map(img => {
+      if (img.complete) return Promise.resolve();
+      return new Promise(resolve => {
+        img.onload = resolve;
+        img.onerror = resolve;
+      });
+    });
+
+    // Process PDF generation after images are loaded
+    Promise.all(imagePromises).then(() => {
+      // Options for PDF generation
+      const opt = {
+        margin: 0,
+        filename: 'Sergio_Alvaro_CV.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: {
+          scale: 3,
+          useCORS: true,
+          logging: false,
+          letterRendering: true
+        },
+        jsPDF: {
+          unit: 'mm',
+          format: 'a4',
+          orientation: 'portrait',
+          compress: true
+        }
+      };
+
+      // Generate PDF from the clone
+      html2pdf()
+              .from(clone)
+              .set(opt)
+              .toPdf()
+              .get('pdf')
+              .then(function(pdf) {
+                // Add page numbers if more than one page
+                const totalPages = pdf.internal.getNumberOfPages();
+
+                if (totalPages > 1) {
+                  for (let i = 1; i <= totalPages; i++) {
+                    pdf.setPage(i);
+                    pdf.setFontSize(8);
+                    pdf.setTextColor(100);
+                    pdf.text('Page ' + i + ' of ' + totalPages, pdf.internal.pageSize.getWidth() - 30, pdf.internal.pageSize.getHeight() - 10);
+                  }
+                }
+              })
+              .save()
+              .then(function() {
+                // Show download button again after PDF is generated
+                document.getElementById('downloadCV').style.display = 'flex';
+
+                // Remove the temporary container
+                document.body.removeChild(tempContainer);
+              });
+    });
+  });
+
+  const animateOnScroll = () => {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    timelineItems.forEach(item => {
+      const itemPosition = item.getBoundingClientRect();
+
+      if(itemPosition.top < window.innerHeight - 100) {
+        item.style.opacity = "1";
+        item.style.transform = "translateY(0)";
+      }
+    });
+  };
+
+  window.addEventListener('load', animateOnScroll);
+  window.addEventListener('scroll', animateOnScroll);
+</script>
+</body>
+</html>
